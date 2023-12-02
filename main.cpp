@@ -1,26 +1,29 @@
 #include <iostream>
-#include "list/List.h"
+#include "list/list.h"
 
 int main()
 {
-    List<int> list;
-    list.push(10);
-    list.push(15);
-    list.push(20);
+    lib::list<int> lists;
+    lists.push_back(1);
+    lists.push_back(5);
+    lists.push_back(9);
+    lists.push_front(3);
+    lists.push_front(99);
+    lists.insert(4, 100);
 
-    for (auto it = list.begin(); it != list.end(); ++it)
+    std::cout << lists.size() << std::endl;
+
+    for (auto it = lists.begin(); it != lists.end(); ++it)
     {
-        std::cout << (*it) << " ";
+        std::cout << "Value: " << *it << " ";
     }
 
-    auto it = list.begin();
-    std::cout << "Next: " << *(it.next(2));
-    list.clear();
+    std::cout << std::endl;
 
-    for (auto it = list.begin(); it != list.end(); ++it)
-    {
-        std::cout << "2: " << (*it) << " ";
-    }
+    std::cout << "Front: " << lists.front() << std::endl;
+    std::cout << "Back: " << lists.back() << std::endl;
+
+    lists.clear();
 
     return 0;
 }
