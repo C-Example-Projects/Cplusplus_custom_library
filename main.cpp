@@ -1,30 +1,28 @@
 #include <iostream>
-#include "stl_lib/map.h"
+#include "stl_lib/hash_table.h"
 
 int main()
 {
-    lib::map<std::string, int> map;
-    map.push("Baa", 65);
-    map.push("Bao", 1);
-    map.push("Bao", 5);
-    map.push("AAA", 2);
+    lib::hashtable<std::string, int> myHashTable;
 
-    for (auto it = map.begin(); it != map.end(); ++it)
-    {
-        std::cout << it.first() << " " << it.second();
-        std::cout << std::endl;
+    myHashTable.insert("One", 1);
+    myHashTable.insert("Two", 2);
+    myHashTable.insert("Three", 3);
+    myHashTable.insert("Four", 4);
+    myHashTable.insert("Five", 5);
+
+    std::cout << "Hash Table contents:" << std::endl;
+    myHashTable.display();
+
+    int value;
+    if (myHashTable.find("Two", value)) {
+        std::cout << "Value of 'Two': " << value << std::endl;
+    } else {
+        std::cout << "'Two' not found in the hash table." << std::endl;
     }
 
-    std::cout << "[]: " << map["AAA"] << std::endl;
-    std::cout << "contains: " << map.contains("c") << std::endl;
+    myHashTable.remove("Two");
 
-    map.erase(2);
-    map.clear();
-
-
-    for (auto it = map.begin(); it != map.end(); ++it)
-    {
-        std::cout << it.first() << " " << it.second();
-        std::cout << std::endl;
-    }
+    std::cout << "After removing 'Two':" << std::endl;
+    myHashTable.display();
 }
