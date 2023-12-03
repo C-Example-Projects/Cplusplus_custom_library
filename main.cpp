@@ -1,19 +1,30 @@
 #include <iostream>
-#include "stl_lib/vector.h"
-#include "stl_lib/list.h"
-#include "stl_lib/pair.h"
+#include "stl_lib/map.h"
 
 int main()
 {
-    lib::pair<int, std::string> pairs(1, "BAO DEP ZAI");
+    lib::map<std::string, int> map;
+    map.push("Baa", 65);
+    map.push("Bao", 1);
+    map.push("Bao", 5);
+    map.push("AAA", 2);
 
-    std::cout << "first: " << pairs.first << std::endl;
-    std::cout << "second: " << pairs.second << std::endl;
+    for (auto it = map.begin(); it != map.end(); ++it)
+    {
+        std::cout << it.first() << " " << it.second();
+        std::cout << std::endl;
+    }
 
-    auto pair = lib::make_pair<int, std::string>(2, "NGAN XINH DEP");
-    
-    std::cout << "first: " << pair.first << std::endl;
-    std::cout << "second: " << pair.second << std::endl;
-  
-    return 0;
+    std::cout << "[]: " << map["AAA"] << std::endl;
+    std::cout << "contains: " << map.contains("c") << std::endl;
+
+    map.erase(2);
+    map.clear();
+
+
+    for (auto it = map.begin(); it != map.end(); ++it)
+    {
+        std::cout << it.first() << " " << it.second();
+        std::cout << std::endl;
+    }
 }
