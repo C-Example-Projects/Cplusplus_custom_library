@@ -14,10 +14,10 @@ namespace lib {
     
         Node* mHead;
         Node* mTail;
-        size_t sizeOfList;
+        size_t mSize;
 
     public:
-        list() : mHead(nullptr), mTail(nullptr), sizeOfList(0) {}
+        list() : mHead(nullptr), mTail(nullptr), mSize(0) {}
 
         void push_back(const T& val)
         {
@@ -32,7 +32,7 @@ namespace lib {
                 node->prev = mTail;
                 mTail = node;
             }
-            ++sizeOfList;
+            ++mSize;
         }
 
         void pop_back()
@@ -40,7 +40,7 @@ namespace lib {
             if (empty())
                 return;
 
-            if (sizeOfList == 1)
+            if (mSize == 1)
             {
                 mHead = mTail = nullptr;
             }
@@ -52,7 +52,7 @@ namespace lib {
                 delete temp;
             }
 
-            --sizeOfList;
+            --mSize;
         }
 
         T back()
@@ -73,7 +73,7 @@ namespace lib {
                 node->next = mHead;
                 mHead = node;
             }
-            ++sizeOfList;
+            ++mSize;
         }
 
         void pop_front()
@@ -81,7 +81,7 @@ namespace lib {
             if (empty())
                 return;
 
-            if (sizeOfList == 1)
+            if (mSize == 1)
             {
                 mHead = mTail = nullptr;
             }
@@ -93,7 +93,7 @@ namespace lib {
                 delete temp;
             }
 
-            --sizeOfList;
+            --mSize;
         }
 
         T front()
@@ -103,12 +103,12 @@ namespace lib {
 
         size_t size()
         {
-            return sizeOfList;
+            return mSize;
         }
 
         bool empty()
         {
-            return sizeOfList == 0;
+            return mSize == 0;
         }
 
         void clear()
@@ -120,15 +120,15 @@ namespace lib {
                 delete temp;
             }
             mTail = nullptr;
-            sizeOfList = 0;
+            mSize = 0;
         }
 
         void insert(const int& position, const T& val)
         {
-            if (sizeOfList < position)
+            if (mSize < position)
                 return;
             
-            if (sizeOfList == position)
+            if (mSize == position)
             {
                 push_back(val);
                 return;
@@ -160,7 +160,7 @@ namespace lib {
             }
             mHead = temp;
 
-            sizeOfList++;
+            mSize++;
         }
 
         class iterator {

@@ -1,29 +1,27 @@
 #include <iostream>
-#include "list.h"
+#include "stl_lib/vector.h"
 
 int main()
 {
-    lib::list<int> lists;
-    lists.push_back(1);
-    lists.push_back(5);
-    lists.push_back(9);
-    lists.push_front(3);
-    lists.push_front(99);
-    lists.insert(4, 100);
+    lib::vector<int> list;
+    list.push(1);
+    list.push(5);
+    list.push(9);
 
-    std::cout << lists.size() << std::endl;
+    std::cout << list.size() << std::endl;
 
-    for (auto it = lists.begin(); it != lists.end(); ++it)
+    for (size_t i = 0; i < list.size(); ++i)
     {
-        std::cout << "Value: " << *it << " ";
+        std::cout << "Value: " << list[i] << " ";
     }
 
-    std::cout << std::endl;
 
-    std::cout << "Front: " << lists.front() << std::endl;
-    std::cout << "Back: " << lists.back() << std::endl;
+    list.pop();
 
-    lists.clear();
+    for (size_t i = 0; i < list.size(); ++i)
+    {
+        std::cout << "Value: " << list[i] << " ";
+    }
 
     return 0;
 }
