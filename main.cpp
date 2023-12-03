@@ -1,27 +1,19 @@
 #include <iostream>
 #include "stl_lib/vector.h"
+#include "stl_lib/list.h"
+#include "stl_lib/pair.h"
 
 int main()
 {
-    lib::vector<int> list;
-    list.push(1);
-    list.push(5);
-    list.push(9);
+    lib::pair<int, std::string> pairs(1, "BAO DEP ZAI");
 
-    std::cout << list.size() << std::endl;
+    std::cout << "first: " << pairs.first << std::endl;
+    std::cout << "second: " << pairs.second << std::endl;
 
-    for (size_t i = 0; i < list.size(); ++i)
-    {
-        std::cout << "Value: " << list[i] << " ";
-    }
-
-
-    list.pop();
-
-    for (size_t i = 0; i < list.size(); ++i)
-    {
-        std::cout << "Value: " << list[i] << " ";
-    }
-
+    auto pair = lib::make_pair<int, std::string>(2, "NGAN XINH DEP");
+    
+    std::cout << "first: " << pair.first << std::endl;
+    std::cout << "second: " << pair.second << std::endl;
+  
     return 0;
 }
